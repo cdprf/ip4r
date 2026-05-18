@@ -21,6 +21,17 @@
 #include "varatt.h"
 #endif
 
+#if PG_VERSION_NUM < 190000
+/* a copy of the PostgreSQL macro for -Wimplicit-fallthrough level 5 */
+#if (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 202311L) || (defined(__cplusplus) && __cplusplus >= 201703L)
+#define pg_fallthrough [[fallthrough]]
+#elif __has_attribute(fallthrough)
+#define pg_fallthrough __attribute__((fallthrough))
+#else
+#define pg_fallthrough
+#endif
+#endif
+
 #ifndef PGDLLEXPORT
 #define PGDLLEXPORT
 #endif

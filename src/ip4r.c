@@ -372,7 +372,7 @@ ip4_cast_from_bit(PG_FUNCTION_ARGS)
 
 	if (val->bit_len == 32)
 	{
-		bits8 *p = VARBITS(val);
+		uint8 *p = VARBITS(val);
 		IP4 ip = (p[0] << 24)|(p[1] << 16)|(p[2] << 8)|p[3];
 		PG_RETURN_IP4(ip);
 	}
@@ -869,8 +869,8 @@ ip4r_cast_from_bit(PG_FUNCTION_ARGS)
 
 	if (bitlen <= 32)
 	{
-		bits8 buf[4];
-		bits8 *p = VARBITS(val);
+		uint8 buf[4];
+		uint8 *p = VARBITS(val);
 		IP4 ip;
 		IP4R *res = palloc(sizeof(IP4R));
 

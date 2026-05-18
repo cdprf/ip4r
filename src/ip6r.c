@@ -375,7 +375,7 @@ ip6_cast_from_bit(PG_FUNCTION_ARGS)
 
 	if (VARBITLEN(val) == 128)
 	{
-		bits8 *p = VARBITS(val);
+		uint8 *p = VARBITS(val);
 		IP6 *res = palloc(sizeof(IP6));
 		ip6_deserialize(p, res);
 		PG_RETURN_IP6_P(res);
@@ -942,8 +942,8 @@ ip6r_cast_from_bit(PG_FUNCTION_ARGS)
 
 	if (bitlen <= 128)
 	{
-		bits8 buf[16];
-		bits8 *p = VARBITS(val);
+		uint8 buf[16];
+		uint8 *p = VARBITS(val);
 		IP6 ip;
 		IP6R *res = palloc(sizeof(IP6R));
 

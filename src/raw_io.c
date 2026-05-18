@@ -115,6 +115,7 @@ bool ip6_raw_input(const char *osrc, uint64 *dst)
 				}
 
 				/* FALLTHROUGH */
+				pg_fallthrough;
 			case 0:
 				if (digits)
 					tmp[words++] = word;
