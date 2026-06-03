@@ -19,6 +19,10 @@ jobs:
     - name: checkout
       uses: actions/checkout@v3
 
+    - name: install pg
+      run: |
+        brew install postgresql
+
     - name: start pg
       run: |
         brew services start postgresql
